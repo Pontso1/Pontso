@@ -1,0 +1,880 @@
+mysql> CREATE DATABASE TT_Holding;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE TT_Holding;
+Database changed
+mysql> CREATE TABLE Person (
+    ->     PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     Name VARCHAR(100) NOT NULL,
+    ->     Address VARCHAR(255),
+    ->     Phone VARCHAR(20),
+    ->     BirthDate DATE
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
+mysql> INSERT INTO Person (PersonID, Name, Address, Phone, BirthDate)
+    -> VALUES
+    -> (1, 'Thato Mokoena', '123 Street, Maseru', '1234567890', '1990-05-12'),
+    -> (2, 'Lebohang Nthabiseng', '456 Road, Maseru', '9876543210', '1985-08-22'),
+    -> (3, 'Kgosi Keabetswe', '789 Avenue, Maseru', '1122334455', '1988-01-30'),
+    -> (4, 'Teboho Motsoahae', '101 Street, Maseru', '6677889900', '1992-11-05'),
+    -> (5, 'Kgomotso Leshabane', '102 Road, Maseru', '9988776655', '1991-03-17'),
+    -> (6, 'Dineo Mphanya', '123 Road, Leribe', '5566778899', '1994-07-25'),
+    -> (7, 'Pheladi Mahlaba', '234 Street, Mafeteng', '1231231234', '1987-06-12'),
+    -> (8, 'Mohale Phafoli', '345 Road, Maseru', '9876543211', '1995-04-18'),
+    -> (9, 'Boitumelo Ramatla', '456 Avenue, Maseru', '2345678901', '1990-02-28'),
+    -> (10, 'Kealeboga Lebona', '567 Street, Maseru', '3456789012', '1992-09-03'),
+    -> (11, 'Keneilwe Sefali', '678 Road, Maseru', '4567890123', '1989-12-15'),
+    -> (12, 'Rethabile Khauoe', '789 Street, Maseru', '5678901234', '1993-11-28'),
+    -> (13, 'Tebello Moloi', '890 Avenue, Maseru', '6789012345', '1996-01-12'),
+    -> (14, 'Lerato Mofokeng', '123 Street, Mohale''s Hoek', '7890123456', '1986-10-22'),
+    -> (15, 'Zanele Selemela', '234 Road, Qacha''s Nek', '8901234567', '1991-02-13'),
+    -> (16, 'Kabelo Tsiu', '345 Street, Maseru', '9012345678', '1990-07-06'),
+    -> (17, 'Tsepo Thabane', '456 Road, Maseru', '1122334456', '1994-08-11'),
+    -> (18, 'Nthabeleng Chabalala', '567 Avenue, Maseru', '2233445566', '1988-12-20');
+Query OK, 18 rows affected (0.01 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
+mysql> select * from Person;
++----------+----------------------+---------------------------+------------+------------+
+| PersonID | Name                 | Address                   | Phone      | BirthDate  |
++----------+----------------------+---------------------------+------------+------------+
+|        1 | Thato Mokoena        | 123 Street, Maseru        | 1234567890 | 1990-05-12 |
+|        2 | Lebohang Nthabiseng  | 456 Road, Maseru          | 9876543210 | 1985-08-22 |
+|        3 | Kgosi Keabetswe      | 789 Avenue, Maseru        | 1122334455 | 1988-01-30 |
+|        4 | Teboho Motsoahae     | 101 Street, Maseru        | 6677889900 | 1992-11-05 |
+|        5 | Kgomotso Leshabane   | 102 Road, Maseru          | 9988776655 | 1991-03-17 |
+|        6 | Dineo Mphanya        | 123 Road, Leribe          | 5566778899 | 1994-07-25 |
+|        7 | Pheladi Mahlaba      | 234 Street, Mafeteng      | 1231231234 | 1987-06-12 |
+|        8 | Mohale Phafoli       | 345 Road, Maseru          | 9876543211 | 1995-04-18 |
+|        9 | Boitumelo Ramatla    | 456 Avenue, Maseru        | 2345678901 | 1990-02-28 |
+|       10 | Kealeboga Lebona     | 567 Street, Maseru        | 3456789012 | 1992-09-03 |
+|       11 | Keneilwe Sefali      | 678 Road, Maseru          | 4567890123 | 1989-12-15 |
+|       12 | Rethabile Khauoe     | 789 Street, Maseru        | 5678901234 | 1993-11-28 |
+|       13 | Tebello Moloi        | 890 Avenue, Maseru        | 6789012345 | 1996-01-12 |
+|       14 | Lerato Mofokeng      | 123 Street, Mohale's Hoek | 7890123456 | 1986-10-22 |
+|       15 | Zanele Selemela      | 234 Road, Qacha's Nek     | 8901234567 | 1991-02-13 |
+|       16 | Kabelo Tsiu          | 345 Street, Maseru        | 9012345678 | 1990-07-06 |
+|       17 | Tsepo Thabane        | 456 Road, Maseru          | 1122334456 | 1994-08-11 |
+|       18 | Nthabeleng Chabalala | 567 Avenue, Maseru        | 2233445566 | 1988-12-20 |
++----------+----------------------+---------------------------+------------+------------+
+18 rows in set (0.00 sec)
+
+mysql>
+ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
+mysql> CREATE TABLE Organization (
+    ->     OrgID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     Name VARCHAR(100) NOT NULL,
+    ->     Address VARCHAR(255),
+    ->     Phone VARCHAR(20),
+    ->     BudgetNumber VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+
+mysql> INSERT INTO Organization (Name, Address, Phone, BudgetNumber) VALUES
+    -> ('TT Holdings Main', 'Maseru, Lesotho', '266-12345678', 'BUD-1001'),
+    -> ('TT Holdings Branch', 'Maputsoe, Lesotho', '266-87654321', 'BUD-1002'),
+    -> ('TT Finance', 'Teyateyaneng, Lesotho', '266-99887766', 'BUD-1003'),
+    -> ('TT IT Solutions', 'Butha-Buthe, Lesotho', '266-88776655', 'BUD-1004'),
+    -> ('TT Consulting', 'Qacha''s Nek, Lesotho', '266-77665544', 'BUD-1005'),
+    -> ('TT Logistics', 'Mokhotlong, Lesotho', '266-66554433', 'BUD-1006'),
+    -> ('TT Marketing', 'Thaba-Tseka, Lesotho', '266-55443322', 'BUD-1007'),
+    -> ('TT Manufacturing', 'Semonkong, Lesotho', '266-44332211', 'BUD-1008'),
+    -> ('TT Research', 'Roma, Lesotho', '266-33221100', 'BUD-1009'),
+    -> ('TT Healthcare', 'Morija, Lesotho', '266-22110099', 'BUD-1010'),
+    -> ('TT Education', 'Tsehlanyane, Lesotho', '266-11009988', 'BUD-1011'),
+    -> ('TT Energy', 'Ha-Mokhalinyane, Lesotho', '266-00998877', 'BUD-1012');
+Query OK, 12 rows affected (0.00 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+mysql> select * from Organization;
++-------+-----------------------+--------------------------+--------------+--------------+
+| OrgID | Name                  | Address                  | Phone        | BudgetNumber |
++-------+-----------------------+--------------------------+--------------+--------------+
+|     1 | TT Holdings Main      | Maseru, Lesotho          | 266-12345678 | BUD-1001     |
+|     2 | TT Holdings Branch    | Maputsoe, Lesotho        | 266-87654321 | BUD-1002     |
+|     3 | TT Finance            | Teyateyaneng, Lesotho    | 266-99887766 | BUD-1003     |
+|     4 | TT IT Solutions       | Butha-Buthe, Lesotho     | 266-88776655 | BUD-1004     |
+|     5 | TT Consulting         | Qacha's Nek, Lesotho     | 266-77665544 | BUD-1005     |
+|     6 | TT Logistics          | Mokhotlong, Lesotho      | 266-66554433 | BUD-1006     |
+|     7 | TT Marketing          | Thaba-Tseka, Lesotho     | 266-55443322 | BUD-1007     |
+|     8 | TT Manufacturing      | Semonkong, Lesotho       | 266-44332211 | BUD-1008     |
+|     9 | TT Research           | Roma, Lesotho            | 266-33221100 | BUD-1009     |
+|    10 | TT Healthcare         | Morija, Lesotho          | 266-22110099 | BUD-1010     |
+|    11 | TT Education          | Tsehlanyane, Lesotho     | 266-11009988 | BUD-1011     |
+|    12 | TT Energy             | Ha-Mokhalinyane, Lesotho | 266-00998877 | BUD-1012     |
+|    13 | TT Security           | Hlotse, Lesotho          | 266-11223344 | BUD-1013     |
+|    14 | TT Management         | Ha Matala, Lesotho       | 266-55667788 | BUD-1014     |
+|    15 | TT Training           | Mafeteng, Lesotho        | 266-66778899 | BUD-1015     |
+|    16 | TT Research Institute | Mohale's Hoek, Lesotho   | 266-77889900 | BUD-1016     |
+|    17 | TT Engineering        | Quthing, Lesotho         | 266-88990011 | BUD-1017     |
++-------+-----------------------+--------------------------+--------------+--------------+
+17 rows in set (0.00 sec)
+mysql>
+
+iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+mysql> CREATE TABLE JobPosition (
+    ->     PositionID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     Title VARCHAR(100) NOT NULL,
+    ->     OrgID INT,
+    ->     Department VARCHAR(100),
+    ->     JobDescription TEXT,
+    ->     MinSalary DECIMAL(10,2),
+    ->     MaxSalary DECIMAL(10,2),
+    ->     FOREIGN KEY (OrgID) REFERENCES Organization(OrgID)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+)
+
+mysql> INSERT INTO JobPosition (Title, OrgID, Department, JobDescription, MinSalary, MaxSalary) VALUES
+    -> ('Software Engineer', 1, 'IT', 'Develops software applications.', 15000.00, 25000.00),
+    -> ('System Analyst', 2, 'IT', 'Analyzes system requirements.', 14000.00, 23000.00),
+    -> ('HR Manager', 3, 'Human Resources', 'Manages HR processes.', 16000.00, 26000.00),
+    -> ('Marketing Manager', 4, 'Marketing', 'Oversees marketing strategies.', 17000.00, 27000.00),
+    -> ('Accountant', 5, 'Finance', 'Handles financial records.', 13000.00, 22000.00),
+    -> ('Network Administrator', 6, 'IT', 'Maintains company networks.', 15000.00, 24000.00),
+    -> ('Data Scientist', 7, 'Research', 'Analyzes and interprets data.', 18000.00, 28000.00),
+    -> ('Operations Manager', 8, 'Operations', 'Oversees daily operations.', 19000.00, 29000.00),
+    -> ('Customer Support', 9, 'Customer Service', 'Handles customer queries.', 12000.00, 20000.00),
+    -> ('Legal Advisor', 10, 'Legal', 'Advises on legal matters.', 20000.00, 30000.00),
+    -> ('Medical Officer', 11, 'Healthcare', 'Provides medical services.', 21000.00, 31000.00),
+    -> ('Research Scientist', 12, 'Research', 'Conducts scientific research.', 20000.00, 31000.00);
+Query OK, 17 rows affected (0.00 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+mysql> select * from JobPosition;
++------------+-----------------------+-------+------------------+---------------------------------+-----------+-----------+
+| PositionID | Title                 | OrgID | Department       | JobDescription                  | MinSalary | MaxSalary |
++------------+-----------------------+-------+------------------+---------------------------------+-----------+-----------+
+|         18 | Software Engineer     |     1 | IT               | Develops software applications. |  15000.00 |  25000.00 |
+|         19 | System Analyst        |     2 | IT               | Analyzes system requirements.   |  14000.00 |  23000.00 |
+|         20 | HR Manager            |     3 | Human Resources  | Manages HR processes.           |  16000.00 |  26000.00 |
+|         21 | Marketing Manager     |     4 | Marketing        | Oversees marketing strategies.  |  17000.00 |  27000.00 |
+|         22 | Accountant            |     5 | Finance          | Handles financial records.      |  13000.00 |  22000.00 |
+|         23 | Network Administrator |     6 | IT               | Maintains company networks.     |  15000.00 |  24000.00 |
+|         24 | Data Scientist        |     7 | Research         | Analyzes and interprets data.   |  18000.00 |  28000.00 |
+|         25 | Operations Manager    |     8 | Operations       | Oversees daily operations.      |  19000.00 |  29000.00 |
+|         26 | Customer Support      |     9 | Customer Service | Handles customer queries.       |  12000.00 |  20000.00 |
+|         27 | Legal Advisor         |    10 | Legal            | Advises on legal matters.       |  20000.00 |  30000.00 |
+|         28 | Medical Officer       |    11 | Healthcare       | Provides medical services.      |  21000.00 |  31000.00 |
+|         29 | Electrical Engineer   |    12 | Energy           | Handles electrical systems.     |  17000.00 |  27000.00 |
+|         30 | Logistics Manager     |    13 | Logistics        | Manages supply chain.           |  16000.00 |  26000.00 |
+|         31 | Security Analyst      |    14 | Security         | Ensures cybersecurity.          |  19000.00 |  29000.00 |
+|         32 | Project Manager       |    15 | Management       | Leads project execution.        |  22000.00 |  32000.00 |
+|         33 | Teacher               |    16 | Education        | Conducts educational training.  |  14000.00 |  23000.00 |
+|         34 | Research Scientist    |    17 | Research         | Conducts scientific research.   |  20000.00 |  31000.00 |
++------------+-----------------------+-------+------------------+---------------------------------+-----------+-----------+
+17 rows in set (0.00 sec)
+
+mysql>
+gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+mysql> CREATE TABLE PersonPosition (
+    ->     PersonPositionID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     PersonID INT,
+    ->     PositionID INT,
+    ->     EmploymentDate DATE,
+    ->     TerminationDate DATE,
+    ->     Salary DECIMAL(10,2),
+    ->     FOREIGN KEY (PersonID) REFERENCES Person(PersonID),
+    ->     FOREIGN KEY (PositionID) REFERENCES JobPosition(PositionID)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO PersonPosition (PersonID, PositionID, EmploymentDate, TerminationDate, Salary) VALUES
+    -> (1, 1, '2015-06-01', '2020-05-31', 20000.00),
+    -> (2, 2, '2014-08-15', '2019-07-30', 19000.00),
+    -> (3, 3, '2013-05-20', '2022-04-25', 21000.00),
+    -> (4, 4, '2016-02-10', '2021-01-15', 22000.00),
+    -> (5, 5, '2012-11-01', '2018-10-30', 18000.00),
+    -> (6, 6, '2017-07-18', '2023-06-10', 20000.00),
+    -> (7, 7, '2019-03-25', NULL, 23000.00),
+    -> (8, 8, '2015-09-05', '2020-08-31', 25000.00),
+    -> (9, 9, '2011-12-12', '2017-11-11', 17000.00),
+    -> (10, 10, '2018-04-01', '2022-03-31', 26000.00),
+    -> (11, 11, '2020-06-20', NULL, 27000.00),
+    -> (12, 12, '2016-10-15', '2021-09-30', 23000.00),
+    -> (13, 13, '2013-07-01', '2019-06-30', 20000.00),
+    -> (14, 14, '2015-01-10', '2020-12-15', 24000.00),
+    -> (15, 15, '2012-05-05', '2017-04-30', 28000.00),
+    -> (16, 16, '2017-11-11', NULL, 19000.00),
+    -> (17, 17, '2014-09-09', '2019-08-31', 25000.00);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tt_holding`.`personposition`, CONSTRAINT `personposition_ibfk_2` FOREIGN KEY (`PositionID`) REFERENCES `jobposition` (`PositionID`))
+mysql> INSERT INTO PersonPosition (PersonID, PositionID, EmploymentDate, TerminationDate, Salary) VALUES
+    ->     (1, 18, '2015-06-01', '2020-05-31', 20000.00),
+    ->     (2, 19, '2014-08-15', '2019-07-30', 19000.00),
+    ->     (3, 20, '2013-05-20', '2022-04-25', 21000.00),
+    ->     (4, 21, '2016-02-10', '2021-01-15', 22000.00),
+    ->     (5, 22, '2012-11-01', '2018-10-30', 18000.00),
+    ->     (6, 23, '2017-07-18', '2023-06-10', 20000.00),
+    ->     (7, 24, '2019-03-25', NULL, 23000.00),
+    ->     (8, 25, '2015-09-05', '2020-08-31', 25000.00),
+    ->     (9, 26, '2011-12-12', '2017-11-11', 17000.00),
+    ->     (10, 27, '2018-04-01', '2022-03-31', 26000.00),
+    ->     (11, 28, '2020-06-20', NULL, 27000.00),
+    ->     (12, 29, '2016-10-15', '2021-09-30', 23000.00),
+    ->     (13, 30, '2013-07-01', '2019-06-30', 20000.00),
+    ->     (14, 31, '2015-01-10', '2020-12-15', 24000.00),
+    ->     (15, 32, '2012-05-05', '2017-04-30', 28000.00),
+    ->     (16, 33, '2017-11-11', NULL, 19000.00),
+    ->     (17, 34, '2014-09-09', '2019-08-31', 25000.00);
+Query OK, 17 rows affected (0.00 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+mysql> select * from PersonPosition;
++------------------+----------+------------+----------------+-----------------+----------+
+| PersonPositionID | PersonID | PositionID | EmploymentDate | TerminationDate | Salary   |
++------------------+----------+------------+----------------+-----------------+----------+
+|               18 |        1 |         18 | 2015-06-01     | 2020-05-31      | 20000.00 |
+|               19 |        2 |         19 | 2014-08-15     | 2019-07-30      | 19000.00 |
+|               20 |        3 |         20 | 2013-05-20     | 2022-04-25      | 21000.00 |
+|               21 |        4 |         21 | 2016-02-10     | 2021-01-15      | 22000.00 |
+|               22 |        5 |         22 | 2012-11-01     | 2018-10-30      | 18000.00 |
+|               23 |        6 |         23 | 2017-07-18     | 2023-06-10      | 20000.00 |
+|               24 |        7 |         24 | 2019-03-25     | NULL            | 23000.00 |
+|               25 |        8 |         25 | 2015-09-05     | 2020-08-31      | 25000.00 |
+|               26 |        9 |         26 | 2011-12-12     | 2017-11-11      | 17000.00 |
+|               27 |       10 |         27 | 2018-04-01     | 2022-03-31      | 26000.00 |
+|               28 |       11 |         28 | 2020-06-20     | NULL            | 27000.00 |
+|               29 |       12 |         29 | 2016-10-15     | 2021-09-30      | 23000.00 |
+|               30 |       13 |         30 | 2013-07-01     | 2019-06-30      | 20000.00 |
+|               31 |       14 |         31 | 2015-01-10     | 2020-12-15      | 24000.00 |
+|               32 |       15 |         32 | 2012-05-05     | 2017-04-30      | 28000.00 |
+|               33 |       16 |         33 | 2017-11-11     | NULL            | 19000.00 |
+|               34 |       17 |         34 | 2014-09-09     | 2019-08-31      | 25000.00 |
++------------------+----------+------------+----------------+-----------------+----------+
+17 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+CREATE TABLE Employment (
+    EmploymentID INT PRIMARY KEY AUTO' at line 1
+mysql> CREATE TABLE Employment (
+    ->     EmploymentID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     PersonID INT,
+    ->     OrgID INT,
+    ->     EmploymentDate DATE,
+    ->     TerminationDate DATE,
+    ->     Bonus DECIMAL(10,2),
+    ->     FOREIGN KEY (PersonID) REFERENCES Person(PersonID),
+    ->     FOREIGN KEY (OrgID) REFERENCES Organization(OrgID)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO Employment (PersonID, OrgID, EmploymentDate, TerminationDate, Bonus)
+    -> VALUES
+    -> (1, 1, '2020-01-01', '2021-01-01', 5000.00),
+    -> (2, 2, '2019-05-15', '2020-05-15', 4000.00),
+    -> (3, 3, '2020-06-20', '2021-06-20', 5500.00),
+    -> (4, 4, '2018-07-30', '2020-07-30', 3000.00),
+    -> (5, 5, '2021-02-01', '2022-02-01', 4500.00),
+    -> (6, 6, '2020-03-10', '2021-03-10', 4700.00),
+    -> (7, 7, '2019-12-25', '2020-12-25', 3800.00),
+    -> (8, 8, '2020-08-15', '2021-08-15', 4900.00),
+    -> (9, 9, '2017-04-04', '2020-04-04', 5200.00),
+    -> (10, 10, '2021-09-30', '2022-09-30', 5500.00),
+    -> (11, 11, '2016-05-22', '2020-05-22', 4300.00),
+    -> (12, 12, '2019-11-05', '2020-11-05', 4600.00),
+    -> (13, 1, '2020-12-01', '2021-12-01', 5400.00),
+    -> (14, 2, '2020-07-15', '2021-07-15', 4200.00),
+    -> (15, 3, '2020-03-22', '2021-03-22', 5000.00),
+    -> (16, 4, '2019-01-13', '2020-01-13', 3500.00),
+    -> (17, 5, '2021-10-10', '2022-10-10', 4600.00);
+Query OK, 17 rows affected (0.01 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+mysql> select * from Employment;
++--------------+----------+-------+----------------+-----------------+---------+
+| EmploymentID | PersonID | OrgID | EmploymentDate | TerminationDate | Bonus   |
++--------------+----------+-------+----------------+-----------------+---------+
+|            1 |        1 |     1 | 2020-01-01     | 2021-01-01      | 5000.00 |
+|            2 |        2 |     2 | 2019-05-15     | 2020-05-15      | 4000.00 |
+|            3 |        3 |     3 | 2020-06-20     | 2021-06-20      | 5500.00 |
+|            4 |        4 |     4 | 2018-07-30     | 2020-07-30      | 3000.00 |
+|            5 |        5 |     5 | 2021-02-01     | 2022-02-01      | 4500.00 |
+|            6 |        6 |     6 | 2020-03-10     | 2021-03-10      | 4700.00 |
+|            7 |        7 |     7 | 2019-12-25     | 2020-12-25      | 3800.00 |
+|            8 |        8 |     8 | 2020-08-15     | 2021-08-15      | 4900.00 |
+|            9 |        9 |     9 | 2017-04-04     | 2020-04-04      | 5200.00 |
+|           10 |       10 |    10 | 2021-09-30     | 2022-09-30      | 5500.00 |
+|           11 |       11 |    11 | 2016-05-22     | 2020-05-22      | 4300.00 |
+|           12 |       12 |    12 | 2019-11-05     | 2020-11-05      | 4600.00 |
+|           13 |       13 |     1 | 2020-12-01     | 2021-12-01      | 5400.00 |
+|           14 |       14 |     2 | 2020-07-15     | 2021-07-15      | 4200.00 |
+|           15 |       15 |     3 | 2020-03-22     | 2021-03-22      | 5000.00 |
+|           16 |       16 |     4 | 2019-01-13     | 2020-01-13      | 3500.00 |
+|           17 |       17 |     5 | 2021-10-10     | 2022-10-10      | 4600.00 |
++--------------+----------+-------+----------------+-----------------+---------+
+17 rows in set (0.00 sec)
+
+mysql>
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+mysql> CREATE TABLE Employment_Type (
+    ->     EmploymentTypeID INT PRIMARY KEY AUTO_INCREMENT,
+    ->     EmploymentID INT,  -- Foreign Key to Employment table
+    ->     Type ENUM('Permanent', 'Part-Time'),
+    ->     ExtraBonus DECIMAL(10,2) DEFAULT 0,  -- Bonus for permanent employees
+    ->     ExtraHours INT DEFAULT 0,            -- Extra hours for part-time employees
+    ->     Credit DECIMAL(10,2) DEFAULT 0,      -- Credit for permanent employees
+    ->     FOREIGN KEY (EmploymentID) REFERENCES Employment(EmploymentID)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> INSERT INTO Employment_Type (EmploymentID, Type, ExtraBonus, ExtraHours, Credit) VALUES
+    -> (1, 'Permanent', 1000.00, 0, 500.00),   -- Permanent with bonus and credit
+    -> (2, 'Part-Time', 0, 20, 0),              -- Part-time with extra hours
+    -> (3, 'Permanent', 1200.00, 0, 600.00),   -- Permanent with bonus and credit
+    -> (4, 'Part-Time', 0, 15, 0),              -- Part-time with extra hours
+    -> (5, 'Permanent', 1100.00, 0, 550.00),   -- Permanent with bonus and credit
+    -> (6, 'Part-Time', 0, 10, 0),              -- Part-time with extra hours
+    -> (7, 'Permanent', 1300.00, 0, 650.00),   -- Permanent with bonus and credit
+    -> (8, 'Part-Time', 0, 18, 0),              -- Part-time with extra hours
+    -> (9, 'Permanent', 1400.00, 0, 700.00),   -- Permanent with bonus and credit
+    -> (10, 'Part-Time', 0, 25, 0),             -- Part-time with extra hours
+    -> (11, 'Permanent', 1500.00, 0, 750.00),  -- Permanent with bonus and credit
+    -> (12, 'Part-Time', 0, 30, 0),             -- Part-time with extra hours
+    -> (13, 'Permanent', 1600.00, 0, 800.00),  -- Permanent with bonus and credit
+    -> (14, 'Part-Time', 0, 12, 0),             -- Part-time with extra hours
+    -> (15, 'Permanent', 1700.00, 0, 850.00),  -- Permanent with bonus and credit
+    -> (16, 'Permanent', 1800.00, 0, 900.00),  -- Permanent with bonus and credit
+    -> (17, 'Part-Time', 0, 22, 0);             -- Part-time with extra hours
+Query OK, 17 rows affected (0.01 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+mysql> select * from Employment_Type;
++------------------+--------------+-----------+------------+------------+--------+
+| EmploymentTypeID | EmploymentID | Type      | ExtraBonus | ExtraHours | Credit |
++------------------+--------------+-----------+------------+------------+--------+
+|                1 |            1 | Permanent |    1000.00 |          0 | 500.00 |
+|                2 |            2 | Part-Time |       0.00 |         20 |   0.00 |
+|                3 |            3 | Permanent |    1200.00 |          0 | 600.00 |
+|                4 |            4 | Part-Time |       0.00 |         15 |   0.00 |
+|                5 |            5 | Permanent |    1100.00 |          0 | 550.00 |
+|                6 |            6 | Part-Time |       0.00 |         10 |   0.00 |
+|                7 |            7 | Permanent |    1300.00 |          0 | 650.00 |
+|                8 |            8 | Part-Time |       0.00 |         18 |   0.00 |
+|                9 |            9 | Permanent |    1400.00 |          0 | 700.00 |
+|               10 |           10 | Part-Time |       0.00 |         25 |   0.00 |
+|               11 |           11 | Permanent |    1500.00 |          0 | 750.00 |
+|               12 |           12 | Part-Time |       0.00 |         30 |   0.00 |
+|               13 |           13 | Permanent |    1600.00 |          0 | 800.00 |
+|               14 |           14 | Part-Time |       0.00 |         12 |   0.00 |
+|               15 |           15 | Permanent |    1700.00 |          0 | 850.00 |
+|               16 |           16 | Permanent |    1800.00 |          0 | 900.00 |
+|               17 |           17 | Part-Time |       0.00 |         22 |   0.00 |
++------------------+--------------+-----------+------------+------------+--------+
+17 rows in set (0.00 sec)
+
+mysql>
+
+
+mysql> CREATE VIEW Employee_View AS
+    -> SELECT P.PersonID, P.Name, P.Address, P.Phone, E.EmploymentDate, E.TerminationDate
+    -> FROM Person P
+    -> JOIN Employment E ON P.PersonID = E.PersonID;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from Employee_View;
++----------+---------------------+---------------------------+------------+----------------+-----------------+
+| PersonID | Name                | Address                   | Phone      | EmploymentDate | TerminationDate |
++----------+---------------------+---------------------------+------------+----------------+-----------------+
+|        1 | Thato Mokoena       | 123 Street, Maseru        | 1234567890 | 2020-01-01     | 2021-01-01      |
+|        2 | Lebohang Nthabiseng | 456 Road, Maseru          | 9876543210 | 2019-05-15     | 2020-05-15      |
+|        3 | Kgosi Keabetswe     | 789 Avenue, Maseru        | 1122334455 | 2020-06-20     | 2021-06-20      |
+|        4 | Teboho Motsoahae    | 101 Street, Maseru        | 6677889900 | 2018-07-30     | 2020-07-30      |
+|        5 | Kgomotso Leshabane  | 102 Road, Maseru          | 9988776655 | 2021-02-01     | 2022-02-01      |
+|        6 | Dineo Mphanya       | 123 Road, Leribe          | 5566778899 | 2020-03-10     | 2021-03-10      |
+|        7 | Pheladi Mahlaba     | 234 Street, Mafeteng      | 1231231234 | 2019-12-25     | 2020-12-25      |
+|        8 | Mohale Phafoli      | 345 Road, Maseru          | 9876543211 | 2020-08-15     | 2021-08-15      |
+|        9 | Boitumelo Ramatla   | 456 Avenue, Maseru        | 2345678901 | 2017-04-04     | 2020-04-04      |
+|       10 | Kealeboga Lebona    | 567 Street, Maseru        | 3456789012 | 2021-09-30     | 2022-09-30      |
+|       11 | Keneilwe Sefali     | 678 Road, Maseru          | 4567890123 | 2016-05-22     | 2020-05-22      |
+|       12 | Rethabile Khauoe    | 789 Street, Maseru        | 5678901234 | 2019-11-05     | 2020-11-05      |
+|       13 | Tebello Moloi       | 890 Avenue, Maseru        | 6789012345 | 2020-12-01     | 2021-12-01      |
+|       14 | Lerato Mofokeng     | 123 Street, Mohale's Hoek | 7890123456 | 2020-07-15     | 2021-07-15      |
+|       15 | Zanele Selemela     | 234 Road, Qacha's Nek     | 8901234567 | 2020-03-22     | 2021-03-22      |
+|       16 | Kabelo Tsiu         | 345 Street, Maseru        | 9012345678 | 2019-01-13     | 2020-01-13      |
+|       17 | Tsepo Thabane       | 456 Road, Maseru          | 1122334456 | 2021-10-10     | 2022-10-10      |
++----------+---------------------+---------------------------+------------+----------------+-----------------+
+17 rows in set (0.02 sec)
+
+
+mysql> CREATE VIEW Active_Employee_View AS
+    -> SELECT PersonID, Name, Address, Phone, EmploymentDate, TerminationDate
+    -> FROM Employee_View
+    -> WHERE TerminationDate IS NULL OR TerminationDate > CURDATE();
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO Employment (PersonID, EmploymentDate, TerminationDate)
+    -> VALUES (18, '2024-01-01', NULL);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM Active_Employee_View;
++----------+----------------------+--------------------+------------+----------------+-----------------+
+| PersonID | Name                 | Address            | Phone      | EmploymentDate | TerminationDate |
++----------+----------------------+--------------------+------------+----------------+-----------------+
+|       18 | Nthabeleng Chabalala | 567 Avenue, Maseru | 2233445566 | 2024-01-01     | NULL            |
++----------+----------------------+--------------------+------------+----------------+-----------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> CREATE VIEW Position_View AS
+    -> SELECT PH.PersonID, PH.PositionID, P.Title, PH.EmploymentDate, PH.TerminationDate, PH.Salary
+    -> FROM PersonPosition PH
+    -> JOIN JobPosition P ON PH.PositionID = P.PositionID;
+Query OK, 0 rows affected (0.01 sec)
+
+
+mysql>
+mysql> select * from Position_View;
++----------+------------+-----------------------+----------------+-----------------+----------+
+| PersonID | PositionID | Title                 | EmploymentDate | TerminationDate | Salary   |
++----------+------------+-----------------------+----------------+-----------------+----------+
+|        1 |         30 | Software Engineer     | 2015-06-01     | 2020-05-31      | 20000.00 |
+|        2 |         31 | System Analyst        | 2014-08-15     | 2019-07-30      | 19000.00 |
+|        3 |         32 | HR Manager            | 2013-05-20     | 2022-04-25      | 21000.00 |
+|        4 |         33 | Marketing Manager     | 2016-02-10     | 2021-01-15      | 22000.00 |
+|        5 |         34 | Accountant            | 2012-11-01     | 2018-10-30      | 18000.00 |
+|        6 |         35 | Network Administrator | 2017-07-18     | 2023-06-10      | 20000.00 |
+|        7 |         36 | Data Scientist        | 2019-03-25     | NULL            | 23000.00 |
+|        8 |         37 | Operations Manager    | 2015-09-05     | 2020-08-31      | 25000.00 |
+|        9 |         38 | Customer Support      | 2011-12-12     | 2017-11-11      | 17000.00 |
+|       10 |         39 | Legal Advisor         | 2018-04-01     | 2022-03-31      | 26000.00 |
+|       11 |         40 | Medical Officer       | 2020-06-20     | NULL            | 27000.00 |
+|       12 |         41 | Research Scientist    | 2017-11-11     | NULL            | 19000.00 |
++----------+------------+-----------------------+----------------+-----------------+----------+
+12 rows in set (0.00 sec)17 rows in set (0.00 sec)
+
+mysql> CREATE VIEW Active_Position_View AS
+    -> SELECT PH.PersonID, PV.Title, PH.EmploymentDate, PH.TerminationDate, PH.Salary, E.Name AS EmployeeName
+    -> FROM Position_View PH
+    -> JOIN Employee_View E ON PH.PersonID = E.PersonID
+    -> JOIN JobPosition PV ON PH.PositionID = PV.PositionID
+    -> WHERE PH.TerminationDate IS NULL OR PH.TerminationDate > CURDATE();
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from Active_Position_View;
++----------+--------------------+----------------+-----------------+----------+------------------+
+| PersonID | Title              | EmploymentDate | TerminationDate | Salary   | EmployeeName     |
++----------+--------------------+----------------+-----------------+----------+------------------+
+|        7 | Data Scientist     | 2019-03-25     | NULL            | 23000.00 | Pheladi Mahlaba  |
+|       11 | Medical Officer    | 2020-06-20     | NULL            | 27000.00 | Keneilwe Sefali  |
+|       12 | Research Scientist | 2017-11-11     | NULL            | 19000.00 | Rethabile Khauoe |
++----------+--------------------+----------------+-----------------+----------+------------------+
+3 rows in set (0.02 sec)
+
+
+
+
+mysql> CREATE TRIGGER InsertEmploymentLog
+    -> AFTER INSERT ON Employment
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     INSERT INTO Employment_Log (PersonID, OrgID, EmploymentDate)
+    ->     VALUES (NEW.PersonID, NEW.OrgID, NEW.EmploymentDate);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> END;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'END' at line 1
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE TRIGGER InsertEmploymentLog
+    -> AFTER INSERT ON Employment
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     INSERT INTO Employment_Log (PersonID, OrgID, EmploymentDate)
+    ->     VALUES (NEW.PersonID, NEW.OrgID, NEW.EmploymentDate);
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW TRIGGERS LIKE 'Employment';
++---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger             | Event  | Table      | Statement
+                               | Timing | Created | sql_mode                                                       | Definer        | character_set_client | collation_connection | Database Collation |
++---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| InsertEmploymentLog | INSERT | employment | BEGIN
+    INSERT INTO Employment_Log (PersonID, OrgID, EmploymentDate)
+    VALUES (NEW.PersonID, NEW.OrgID, NEW.EmploymentDate);
+END | AFTER  | NULL    | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++---------------------+--------+------------+--------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+1 row in set (0.03 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+mysql> DELIMITER ;
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE TRIGGER InsertPositionLog
+    -> AFTER INSERT ON Position_History
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     INSERT INTO Position_Log (PersonID, PositionID, EmploymentDate, TerminationDate)
+    ->     VALUES (NEW.PersonID, NEW.PositionID, NEW.EmploymentDate, NEW.TerminationDate);
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> show all triggers;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'all triggers' at line 1
+mysql> show all triggers;SELECT *
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'all triggers' at line 1
+    -> FROM information_schema.TRIGGERS
+    -> WHERE TRIGGER_NAME = 'InsertPositionLog';
++-----------------+----------------+-------------------+--------------------+----------------------+---------------------+--------------------+--------------+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+---------------+----------------------------+----------------------------+--------------------------+--------------------------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| TRIGGER_CATALOG | TRIGGER_SCHEMA | TRIGGER_NAME      | EVENT_MANIPULATION | EVENT_OBJECT_CATALOG | EVENT_OBJECT_SCHEMA | EVENT_OBJECT_TABLE | ACTION_ORDER | ACTION_CONDITION | ACTION_STATEMENT
+                                                             | ACTION_ORIENTATION | ACTION_TIMING | ACTION_REFERENCE_OLD_TABLE | ACTION_REFERENCE_NEW_TABLE | ACTION_REFERENCE_OLD_ROW | ACTION_REFERENCE_NEW_ROW | CREATED | SQL_MODE                                                       | DEFINER        | CHARACTER_SET_CLIENT | COLLATION_CONNECTION | DATABASE_COLLATION |
++-----------------+----------------+-------------------+--------------------+----------------------+---------------------+--------------------+--------------+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+---------------+----------------------------+----------------------------+--------------------------+--------------------------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| def             | tt_holding     | InsertPositionLog | INSERT             | def                  | tt_holding          | position_history   |            0 | NULL             | BEGIN
+    INSERT INTO Position_Log (PersonID, PositionID, EmploymentDate, TerminationDate)
+    VALUES (NEW.PersonID, NEW.PositionID, NEW.EmploymentDate, NEW.TerminationDate);
+END | ROW                | AFTER         | NULL                       | NULL                       | OLD                      | NEW                      | NULL    | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | root@localhost | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++-----------------+----------------+-------------------+--------------------+----------------------+---------------------+--------------------+--------------+------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+---------------+----------------------------+----------------------------+--------------------------+--------------------------+---------+----------------------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+1 row in set (0.13 sec)
+
+
+
+
+
+
+mysql> CREATE TRIGGER UpdateEmploymentStatus
+    -> AFTER UPDATE ON Employment
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     IF NEW.TerminationDate <> OLD.TerminationDate THEN
+    ->         UPDATE Employment_Log
+    ->         SET TerminationDate = NEW.TerminationDate
+    ->         WHERE PersonID = OLD.PersonID AND OrgID = OLD.OrgID;
+    ->     END IF;
+    ->
+    ->     IF NEW.Bonus <> OLD.Bonus THEN
+    ->         UPDATE Employment_Log
+    ->         SET Bonus = NEW.Bonus
+    ->         WHERE PersonID = OLD.PersonID AND OrgID = OLD.OrgID;
+    ->     END IF;
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE TRIGGER UpdateEmploymentStatus;
++------------------------+----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Trigger                | sql_mode                                                       | SQL Original Statement
+
+
+                                                                                                                                            | character_set_client | collation_connection | Database Collation |
++------------------------+----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| UpdateEmploymentStatus | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` TRIGGER UpdateEmploymentStatus
+AFTER UPDATE ON Employment
+FOR EACH ROW
+BEGIN
+    IF NEW.TerminationDate <> OLD.TerminationDate THEN
+        UPDATE Employment_Log
+        SET TerminationDate = NEW.TerminationDate
+        WHERE PersonID = OLD.PersonID AND OrgID = OLD.OrgID;
+    END IF;
+
+    IF NEW.Bonus <> OLD.Bonus THEN
+        UPDATE Employment_Log
+        SET Bonus = NEW.Bonus
+        WHERE PersonID = OLD.PersonID AND OrgID = OLD.OrgID;
+    END IF;
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++------------------------+----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.01 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+mysql> DELIMITER ;
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE TRIGGER UpdatePositionSalary
+    -> AFTER UPDATE ON Position_History
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     IF NEW.Salary <> OLD.Salary THEN
+    ->         UPDATE Position_Log
+    ->         SET Salary = NEW.Salary
+    ->         WHERE PersonID = OLD.PersonID AND PositionID = OLD.PositionID;
+    ->     END IF;
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE TRIGGER UpdatePositionSalary;
++----------------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Trigger              | sql_mode                                                       | SQL Original Statement
+
+                                                                                             | character_set_client | collation_connection | Database Collation |
++----------------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| UpdatePositionSalary | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` TRIGGER UpdatePositionSalary
+AFTER UPDATE ON Position_History
+FOR EACH ROW
+BEGIN
+    IF NEW.Salary <> OLD.Salary THEN
+        UPDATE Position_Log
+        SET Salary = NEW.Salary
+        WHERE PersonID = OLD.PersonID AND PositionID = OLD.PositionID;
+    END IF;
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++----------------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE TRIGGER DeleteEmploymentLog
+    -> AFTER DELETE ON Employment
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     DELETE FROM Employment_Log
+    ->     WHERE PersonID = OLD.PersonID AND OrgID = OLD.OrgID;
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW TRIGGERS LIKE 'DeleteEmploymentLog';
+Empty set (0.01 sec)
+
+mysql>
+
+mysql> DELIMITER ;
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE TRIGGER DeletePositionLog
+    -> AFTER DELETE ON Position_History
+    -> FOR EACH ROW
+    -> BEGIN
+    ->     DELETE FROM Position_Log WHERE PersonID = OLD.PersonID AND PositionID = OLD.PositionID;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql>  SHOW TRIGGERS LIKE DeletePositionLog;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DeletePositionLog' at line 1
+mysql> SHOW TRIGGERS LIKE 'DeletePositionLog';
+Empty set (0.05 sec)
+
+mysql>
+
+
+
+
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE FUNCTION GetEmployeeAge (PersonID INT)
+    -> RETURNS INT
+    -> BEGIN
+    ->     DECLARE Age INT;
+    ->
+    ->     -- Calculate the age based on the birthdate
+    ->     SELECT DATEDIFF(CURRENT_DATE, BirthDate) / 365 INTO Age
+    ->     FROM Person
+    ->     WHERE PersonID = PersonID;
+    ->
+    ->     RETURN Age;
+    -> END $$
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE FUNCTION GetEmployeeAge;
++----------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Function       | sql_mode                                                       | Create Function
+
+                                       | character_set_client | collation_connection | Database Collation |
++----------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| GetEmployeeAge | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` FUNCTION `GetEmployeeAge`(PersonID INT) RETURNS int(11)
+BEGIN
+    DECLARE Age INT;
+
+
+    SELECT DATEDIFF(CURRENT_DATE, BirthDate) / 365 INTO Age
+    FROM Person
+    WHERE PersonID = PersonID;
+
+    RETURN Age;
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++----------------+----------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE FUNCTION GetBonusEligibility (PersonID INT)
+    -> RETURNS DECIMAL(10, 2)
+    -> BEGIN
+    ->     DECLARE Bonus DECIMAL(10, 2);
+    ->
+    ->     SELECT CASE
+    ->                 WHEN EmploymentType = 'Permanent' THEN 1000
+    ->                 ELSE 500
+    ->            END INTO Bonus
+    ->     FROM Employment
+    ->     WHERE PersonID = PersonID;  -- This is now correct, no ambiguity here
+    ->
+    ->     RETURN Bonus;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE FUNCTION GetBonusEligibility;
++---------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Function            | sql_mode                                                       | Create Function
+
+
+ | character_set_client | collation_connection | Database Collation |
++---------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| GetBonusEligibility | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` FUNCTION `GetBonusEligibility`(PersonID INT) RETURNS decimal(10,2)
+BEGIN
+    DECLARE Bonus DECIMAL(10, 2);
+
+    SELECT CASE
+                WHEN EmploymentType = 'Permanent' THEN 1000
+                ELSE 500
+           END INTO Bonus
+    FROM Employment
+    WHERE PersonID = PersonID;
+
+    RETURN Bonus;
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++---------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE PROCEDURE AssignPositionToEmployee (IN personID INT, IN positionID INT)
+    -> BEGIN
+    ->     INSERT INTO Person_Position (PersonID, PositionID, StartDate)
+    ->     VALUES (personID, positionID, CURRENT_DATE);
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE PROCEDURE AssignPositionToEmployee;
++--------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Procedure                | sql_mode                                                       | Create Procedure
+
+                              | character_set_client | collation_connection | Database Collation |
++--------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| AssignPositionToEmployee | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` PROCEDURE `AssignPositionToEmployee`(IN personID INT, IN positionID INT)
+BEGIN
+    INSERT INTO Person_Position (PersonID, PositionID, StartDate)
+    VALUES (personID, positionID, CURRENT_DATE);
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++--------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> DELIMITER $$
+mysql>
+mysql> CREATE PROCEDURE TerminateEmployment (IN personID INT, IN orgID INT)
+    -> BEGIN
+    ->     UPDATE Employment
+    ->     SET TerminationDate = CURRENT_DATE
+    ->     WHERE PersonID = personID AND OrgID = orgID;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> DELIMITER ;
+mysql> SHOW CREATE PROCEDURE TerminateEmployment;
++---------------------+----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| Procedure           | sql_mode                                                       | Create Procedure
+
+          | character_set_client | collation_connection | Database Collation |
++---------------------+----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+| TerminateEmployment | STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`root`@`localhost` PROCEDURE `TerminateEmployment`(IN personID INT, IN orgID INT)
+BEGIN
+    UPDATE Employment
+    SET TerminationDate = CURRENT_DATE
+    WHERE PersonID = personID AND OrgID = orgID;
+END | latin1               | latin1_swedish_ci    | latin1_swedish_ci  |
++---------------------+----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+mysql> CREATE USER 'user1'@'localhost' IDENTIFIED BY 'password1';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT UPDATE ON TT_Holding.* TO 'user1'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+mysql> GRANT SELECT, INSERT ON TT_Holding.* TO 'user1'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CREATE USER 'user2'@'localhost' IDENTIFIED BY 'password2';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> GRANT INSERT ON TT_Holding.* TO 'user2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+mysql> GRANT SELECT, UPDATE ON TT_Holding.* TO 'user2'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW GRANTS FOR 'user1'@'localhost';
++--------------------------------------------------------------------------------------------------------------+
+| Grants for user1@localhost                                                                                   |
++--------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'user1'@'localhost' IDENTIFIED BY PASSWORD '*668425423DB5193AF921380129F465A6425216D0' |
+| GRANT SELECT, INSERT ON `tt_holding`.* TO 'user1'@'localhost'                                                |
++--------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> SHOW GRANTS FOR 'user2'@'localhost';
++--------------------------------------------------------------------------------------------------------------+
+| Grants for user2@localhost                                                                                   |
++--------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'user2'@'localhost' IDENTIFIED BY PASSWORD '*DC52755F3C09F5923046BD42AFA76BD1D80DF2E9' |
+| GRANT SELECT, UPDATE ON `tt_holding`.* TO 'user2'@'localhost'                                                |
++--------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql>
